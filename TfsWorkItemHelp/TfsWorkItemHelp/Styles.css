@@ -1,0 +1,24 @@
+﻿body {
+    font: 12px Segoe UI;
+}
+
+p {
+    padding:0 0 0 10px;
+}
+
+table {
+    width: 50%;
+    margin: 0 0 0 10px;
+}
+
+table, td, th {
+    text-align: left;
+    padding: 5px 5px;
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+
+li.ordered {
+    padding:0 0 20px 0;
+}
+
