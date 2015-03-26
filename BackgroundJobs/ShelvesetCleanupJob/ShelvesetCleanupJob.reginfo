@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+//////////////////////////////////////////////////////////////////////////////////
+// This file is part of a Microsoft sample.
+//
+// (c) 2013 Microsoft Corporation. All rights reserved. 
+// 
+// THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+// KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+// PARTICULAR PURPOSE.
+//////////////////////////////////////////////////////////////////////////////////
+-->
+
+<RegistryInfo xmlns="http://schemas.microsoft.com/PSfD/Germany/TeamFoundation/RegistryInfo">
+  <Entry path="/Configuration/ShelvesetCleanupJob/EmailTemplateSearchPath" defaultValue="Transforms"
+         description="The path to the email template used by the job. Usually this path is relative to the Team Foundation Background Job Agent's installation path."/>
+  <Entry path="/Configuration/ShelvesetCleanupJob/EmailTemplate" defaultValue="ShelvesetCleanupTemplate.xsl"
+         description="The name of the XML Stylesheet file (.xsl) that contains the email template for the warning mail. The file must reside in the 'EmailTemplateSearchPath'. If you need to reference a file in a subfolder, simply prepend the relative folder structure to the file name (e.g. subfolder\myTemplate.xsl)."/>
+  <Entry path="/Configuration/ShelvesetCleanupJob/WarningAgeInDays" defaultValue="300"
+         description="The maximum age of a shelveset in days, before warning emails are sent."/>
+  <Entry path="/Configuration/ShelvesetCleanupJob/DeleteAgeInDays" defaultValue="360"
+         description="The maximum age of a shelveset in days, before it is deleted."/>
+  <Entry path="/Configuration/ShelvesetCleanupJob/EmailSubject" defaultValue="ACTION REQUIRED - Shelveset Cleanup Warning"
+         description="The subject that is used for the warning email."/>
+  <Entry path="/Configuration/ShelvesetCleanupJob/EmailPriority" defaultValue="High"
+         description="The priority that is used to send the warning email. Possible values are 'High', 'Normal' and 'Low'."/>
+  <Entry path="/Configuration/ShelvesetCleanupJob/WarnIfNoEmailAddress" defaultValue="True"
+         description="If set to 'True', a warning is logged in the job history, if a shelveset owner does not have an associated email address. Set this to 'False' if you have many technical accounts that do not have email addresses."/>
+  <Entry path="/Configuration/WorkspaceCleanupJob/DeleteIfNoEmailAddress" defaultValue="False">
+    <![CDATA[If set to 'True', shelvesets are deleted even if the owner does not have an associated email address.
+
+ATTENTION:
+Setting this parameter to 'True' might lead to unintentional and unnoticed loss in shelveset data!
+Please make sure to monitor the job's output for warnings (see WarnIfNoEmailAddress), so you know which shelvesets will be deleted without any notice to the owner.
+  ]]>
+  </Entry>
+  <Entry path="/Configuration/ShelvesetCleanupJob/LogLevel" defaultValue="0">
+    <![CDATA[Defines the detail of information from the Shelveset Cleanup Job that is written to the job history. Possible values are:
+      0: No logging
+      1: Log errors
+      2: Log errors and warnings
+    ]]>
+  </Entry>
+</RegistryInfo>

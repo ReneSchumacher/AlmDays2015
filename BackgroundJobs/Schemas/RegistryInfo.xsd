@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+//////////////////////////////////////////////////////////////////////////////////
+// This file is part of a Microsoft sample.
+//
+// (c) 2013 Microsoft Corporation. All rights reserved. 
+// 
+// THIS CODE AND INFORMATION ARE PROVIDED AS IS WITHOUT WARRANTY OF ANY
+// KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+// IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+// PARTICULAR PURPOSE.
+//////////////////////////////////////////////////////////////////////////////////
+-->
+
+<schema id="RegistryInfo"
+           xmlns="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://schemas.microsoft.com/PSfD/Germany/TeamFoundation/RegistryInfo"
+           xmlns:ri="http://schemas.microsoft.com/PSfD/Germany/TeamFoundation/RegistryInfo"
+           elementFormDefault="qualified">
+
+  <simpleType name="bool">
+    <restriction base="string">
+      <enumeration value="true"/>
+      <enumeration value="false"/>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="registryScope">
+    <restriction base="string">
+      <enumeration value="Server"/>
+      <enumeration value="Collection"/>
+      <enumeration value="All"/>
+    </restriction>
+  </simpleType>
+  
+  <element name="RegistryInfo" type="ri:RegistryInfoType" />
+
+  <complexType name="RegistryInfoType">
+    <annotation>
+      <documentation>
+        Describes Team Foundation Server registry settings and their default values.
+      </documentation>
+    </annotation>
+    <choice minOccurs="1" maxOccurs="unbounded">
+      <element name="Path" type="ri:PathType" />
+      <element name="Entry" type="ri:EntryType" />
+    </choice>
+  </complexType>
+
+  <complexType name="PathType" mixed="true">
+    <annotation>
+      <documentation>
+        Sets default values for a registry path and all its child paths and settings. If you specify settings under this path using the Entry element, the values of the Entry element will override those of the Path element.
+      </documentation>
+    </annotation>
+    <attribute name="path" type="string" use="required">
+      <annotation>
+        <documentation>
+          The full registry path.
+        </documentation>
+      </annotation>
+    </attribute>
+    <attribute name="description" type="string">
+      <annotation>
+        <documentation>
+          The default description for all child paths and settings. If you need special formatting, specify the description as inner text of the Path element.
+        </documentation>
+      </annotation>
+    </attribute>
+    <attribute name="isCritical" type="ri:bool">
+      <annotation>
+        <documentation>
+          Set to true, if the settings beneath this path are critical for TFS to operate.
+          The default is true.
+        </documentation>
+      </annotation>
+    </attribute>
+  </complexType>
+  
+  <complexType name="EntryType" mixed="true">
+    <annotation>
+      <documentation>
+        Describes a registry entry.
+      </documentation>
+    </annotation>
+    <attribute name="path" type="string" use="required">
+      <annotation>
+        <documentation>
+          The full path for the registry entry.
+        </documentation>
+      </annotation>
+    </attribute>
+    <attribute name="defaultValue" type="string" use="required">
+      <annotation>
+        <documentation>
+          The default value for the registry entry, which is used, if the entry does not exist.
+        </documentation>
+      </annotation>
+    </attribute>
+    <attribute name="description" type="string">
+      <annotation>
+        <documentation>
+          The description of the registry setting. If you need special formatting, specify the description as inner text of the Entry element.
+        </documentation>
+      </annotation>
+    </attribute>
+    <attribute name="isCritical" type="ri:bool">
+      <annotation>
+        <documentation>
+          Set to true, if the settings is critical for TFS to operate.
+          The default is false.
+        </documentation>
+      </annotation>
+    </attribute>
+    <attribute name="scope" type="ri:registryScope">
+      <annotation>
+        <documentation>
+          Defines, if the setting can exist only in the server registry (Server), the collection registry (Collection) or both (All). The default is All.
+        </documentation>
+      </annotation>
+    </attribute>
+  </complexType>
+</schema>

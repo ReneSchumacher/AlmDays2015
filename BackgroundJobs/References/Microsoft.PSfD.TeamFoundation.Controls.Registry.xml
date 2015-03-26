@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.PSfD.TeamFoundation.Controls.Registry</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView">
+            <summary>
+            Represents a control that can be used to display and edit a Team Foundation Server registry.
+            The control allows adding meta information (e.g. descriptions) to registry settings, which even allows
+            displaying well-known registry settings that currently are not stored in the registry.
+            </summary>
+        </member>
+        <member name="M:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.#ctor">
+            <summary>
+            Creates a new instance of the <see cref="T:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView"/> control.
+            </summary>
+        </member>
+        <member name="M:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.ShouldSerializeIncludePaths">
+            <summary>
+            Controls whether the <see cref="P:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.IncludePaths"/> property value needs to be serialized to source code during design time.
+            </summary>
+            <returns>Tru, if the property value must be serialized, otherwhise False.</returns>
+        </member>
+        <member name="M:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.ResetIncludePaths">
+            <summary>
+            Resets the <see cref="P:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.IncludePaths"/> property to its default value.
+            </summary>
+        </member>
+        <member name="M:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.Save">
+            <summary>
+            Saves all changes back to the Team Foundation Server registry.
+            </summary>
+        </member>
+        <member name="M:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.RefreshData">
+            <summary>
+            Reads the current values from the TFS registry.
+            </summary>
+        </member>
+        <member name="F:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="E:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.DiscardingChanges">
+            <summary>
+            This event is raised, whenever <see cref="M:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.RefreshData"/> is called and there are changes
+            that have not been saved to the TFS registry yet. Cancel the event to prevent the
+            data refresh and preserve the changes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.RegistryInfoPath">
+            <summary>
+            Gets or sets the path that contains registry info files (*.reginfo).
+            If not set, the application's working directory is searched for registry info files.
+            If you don't want to search the application's working directory, set this property to null or String.Empty.
+            </summary>
+        </member>
+        <member name="P:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.RegistryInfos">
+            <summary>
+            Allows adding or removing additional registry information files as XmlDocument objects.
+            The information is used in addition to the information read from the <see cref="P:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.RegistryInfoPath"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.Connection">
+            <summary>
+            Gets or sets the connection to a Team Foundation Server.
+            This property takes either a TfsConfigurationServer object or a TfsTeamProjectCollection
+            object. Depending on the type, either the server or the collection level registry is edited.
+            </summary>
+        </member>
+        <member name="P:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.HasUnsavedData">
+            <summary>
+            True, if the grid contains changes that have not been persisted in the TFS registry,
+            otherwise False.
+            </summary>
+        </member>
+        <member name="P:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.ShowCriticalEntries">
+            <summary>
+            Set to True to display registry entries that are marked as critical.
+            </summary>
+        </member>
+        <member name="P:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.IncludePaths">
+            <summary>
+            Gets or sets the list of registry paths to read from Team Foundation Server. The default is to read the full TFS registry.
+            Combine this with the <see cref="P:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.ExcludePaths"/> property to specify, which parts of the registry should be read.
+            </summary>
+        </member>
+        <member name="P:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.ExcludePaths">
+            <summary>
+            Gets or sets the list of registry paths that should be excluded, when reading the TFS registry. The default is null.
+            Combine this with the <see cref="P:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.IncludePaths"/> property to specify, which parts of the registry should be read.
+            </summary>
+        </member>
+        <member name="P:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.AllowAddingCustomEntries">
+            <summary>
+            Set to True, if the user is allowed to add custom registry entries. If set to False, the user can only edit/delte existing or virtual settings.
+            </summary>
+        </member>
+        <member name="P:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.OnlyReadEntriesWithRegistryInfo">
+            <summary>
+            If set to True, only entries/paths that have a corresponding registry info are read from the TFS registry.
+            The <see cref="P:Microsoft.PSfD.TeamFoundation.Controls.TfsRegistryGridView.IncludePaths"/> property is ignored, if this is True.
+            </summary>
+        </member>
+    </members>
+</doc>
