@@ -235,7 +235,7 @@ namespace Microsoft.PSfD.TeamFoundation.BackgroundJobs
                                 messageBuilder.AppendLine();
                                 foreach (XmlNode node in doc.SelectNodes("//Shelveset"))
                                 {
-                                    messageBuilder.AppendFormat("  {0}, created {2}", node.Attributes["name"].Value, node.Attributes["created"].Value);
+                                    messageBuilder.AppendFormat("  {0}, created {1}", node.Attributes["name"].Value, node.Attributes["created"].Value);
                                     messageBuilder.AppendLine();
                                 }
                                 LogWarning(messageBuilder.ToString());
